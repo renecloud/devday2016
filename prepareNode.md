@@ -1,24 +1,7 @@
 ## Preparation of Node
-#### Update repository
-```
-# cd /etc/yum.repos.d
-# sudo wget https://raw.githubusercontent.com/renecloud/HOL-OOWBR/master/files/ol6_uekr4.repo
-```
-#### Enabling and disabling repositories 
-```
-# sudo yum install -y yum-utils
-# sudo yum-config-manager --disable ol6_UEKR3_latest
-# sudo yum-config-manager --enable ol6_UEKR4
-# sudo yum-config-manager --enable ol6_addons
-```
-#### Installing requiered packages and reset
-```
-# sudo yum install -y nano git wget curl docker-engine
-# sudo reboot
-```
 #### Increase root partion from 3Gb to 60Gb
 ```
-# fdisk -cu /dev/xvdc
+# fdisk -cu /dev/xvdb
 ```
 * To Create new partition Press **n**.
 * Choose primary partition use **p**.
@@ -33,8 +16,34 @@
 # (echo n; echo p; echo 3; echo; echo; echo t; echo 3; echo 8e; echo p; echo w) | sudo fdisk -cu /dev/xvdb
 ```
 Creating physical volume manager
-``` # sudo pvcreate /dev/sdc1 ```
-Extending current 
-``` sudo vgextend vg_tecmint /dev/sda1
+``` 
+# sudo pvcreate /dev/xvdb3
+```
+Extending current volume group
+``` 
+sudo vgextend vg_main /dev/xvdb3
+```
+Adding more blocks to logical volume
+```
+# sudo lvextend -l +1503 /dev/vg_main/lv_root
+# sudo resize2fs /dev/vg_main/lv_root
+```
 
+#### Enabling and disabling repositories 
+```
+# sudo yum install -y yum-utils
+# sudo yum-config-manager --disable ol6_UEKR3_latest
+# sudo yum-config-manager --enable ol6_UEKR4
+# sudo yum-config-manager --enable ol6_addons
+```
+#### Installing requiered packages and reset
+```
+# sudo yum install -y nano git wget curl docker-engine
+# sudo reboot
+```
 
+#### Update repository
+```
+# cd /etc/yum.repos.d
+# sudo wget https://raw.githubusercontent.com/renecloud/HOL-OOWBR/master/files/ol6_uekr4.repo
+```
