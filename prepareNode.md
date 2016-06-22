@@ -1,4 +1,21 @@
 ## Preparation of Node
+#### Update repository
+```
+# cd /etc/yum.repos.d
+# sudo wget https://raw.githubusercontent.com/renecloud/HOL-OOWBR/master/files/ol6_uekr4.repo
+```
+#### Enabling and disabling repositories 
+```
+# sudo yum install -y yum-utils
+# sudo yum-config-manager --disable ol6_UEKR3_latest
+# sudo yum-config-manager --enable ol6_UEKR4
+# sudo yum-config-manager --enable ol6_addons
+```
+#### Installing requiered packages and reset
+```
+# sudo yum install -y nano git wget curl docker-engine
+# sudo reboot
+```
 #### Increase root partion from 3Gb to 60Gb
 ```
 # fdisk -cu /dev/xvdc
@@ -20,15 +37,4 @@ Creating physical volume manager
 Extending current 
 ``` sudo vgextend vg_tecmint /dev/sda1
 
-#### Enabling and disabling repositories 
-```
-# sudo yum install -y yum-utils
-# sudo yum-config-manager --disable ol6_UEKR3_latest
-# sudo yum-config-manager --enable ol6_UEKR4
-# sudo yum-config-manager --enable ol6_addons
-```
-#### Installing requiered packages and reset
-```
-# sudo yum install -y nano git wget curl docker-engine
-# sudo reboot
-```
+
