@@ -30,7 +30,7 @@
 * Press **w** to write the changes
 *or trying to do in one single command:
 ```
-# (echo n; echo p; TODO: Poner el commando completo 
+# (echo n; echo p; echo 3; echo; echo; echo t; echo 3; echo 8e; echo p; echo w) | sudo fdisk -cu /dev/xvdb
 ```
 Creating physical volume manager
 ``` # sudo pvcreate /dev/sdc1 ```
