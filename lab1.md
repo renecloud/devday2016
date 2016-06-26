@@ -8,9 +8,9 @@ You can check how to configure private key on PuTTY [here](https://support.suso.
 In this screen you have to configure an private key:
 ![Screen to add private key](files/Putty-config-sshauth.png)
 So you put an HOST that instructor given to you.
-![Screen to open session to server](files/)
+![Screen to open session to server](files/Putty-configuration.png)
 **On Linux or Mac:** You need to use command line terminal typing "terminal" in search panel.
 
 ```
-
+ssh -i oowbr-private.key
 ```
