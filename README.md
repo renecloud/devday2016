@@ -1,5 +1,10 @@
 # Hands on Lab. Deploy Weblogic Continuos Availability with Docker
-## Check all pre-requisites
+## Laboratory 1 : Setup Enviroment [here](https://github.com/renecloud/HOL-OOWBR/edit/master/lab1.md)
+## Laboratory 2 : Deploying and Testing HA
+## Laboratory 3 : Setup Intra-Datacenters
+## Laboratory 4 : Deploying and Testing MAA
+
+Check all pre-requisites
 ### Kernel version installed
 ``` 
 $ uname -a 
