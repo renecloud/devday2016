@@ -30,6 +30,7 @@ Check docker installation
 ```
 # sudo docker --version
 Docker version 1.10.3, build 57bf6fd
+
 # sudo docker run hello-world
 ...
 Hello from Docker.
@@ -45,9 +46,9 @@ renecloud/weblogic   latest              8ad042d7793e        5 months ago       
 List all our containers that are running
 ```
 # sudo docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+CONTAINER ID    IMAGE       COMMAND         CREATED         STATUS          PORTS             NAMES
 ```
-In fact there aren't containers yet
+In fact there aren't instances yet
 
 Run container as Weblogic Administrator
 ```
