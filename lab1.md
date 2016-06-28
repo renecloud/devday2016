@@ -50,8 +50,31 @@ CONTAINER ID    IMAGE       COMMAND         CREATED         STATUS          PORT
 ```
 In fact there aren't instances yet
 
-Run container as Weblogic Administrator
+Run container **wlsadmin** Weblogic Admin Server
 ```
+# sudo docker run --name wlsadmin -d -p 8001:8001 renecloud/weblogic
+dd35826b21fa4e6e96bb66c2c7196c602c1d8862c3148562e29de6b78f573e35
+```
+This container is running up, Now we will check logs. Firstable we need to get CONTAINER ID
+```
+# sudo docker ps
+CONTAINER ID        IMAGE                COMMAND              CREATED             STATUS              PORTS                                        NAMES
+dd35826b21fa        renecloud/weblogic   "startWebLogic.sh"   6 seconds ago       Up 5 seconds        5556/tcp, 7001/tcp, 0.0.0.0:8001->8001/tcp   wlsadmin
+```
+Now we can see all logs of this instance
+```
+# sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
+<Jun 28, 2016 1:18:13 AM UTC> <Notice> <WebLogicServer> <BEA-000360> <The server started in RUNNING mode.> 
+<Jun 28, 2016 1:18:13 AM UTC> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to RUNNING.> 
+```
+Your Weblogic Admin is ready!
+Please verify on your Web Browser 
+
+http://<ID>.renecloud.io:8001/console
+
+
+
+
 
 
 
