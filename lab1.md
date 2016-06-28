@@ -38,16 +38,19 @@ Hello from Docker.
 Check Memory available
 ```
 # sudo free -h
-TODO: Put memory free example
+             total       used       free     shared    buffers     cached
+Mem:           14G       236M        14G       160K        26M        83M
+-/+ buffers/cache:       126M        14G 
+Swap:         287M         0B       287M 
 ```
 
 ## 1.4 Setting Up Admin Server
 List all images on our local repository
 ```
 # sudo docker images
-REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
-hello-world          latest              693bce725149        2 weeks ago         967 B
-renecloud/weblogic   latest              8ad042d7793e        5 months ago        1.383 GB
+renecloud/weblogic-domain   latest              c0c2a0eb41c6        37 hours ago        1.806 GB
+hello-world                 latest              693bce725149        2 weeks ago         967 B
+renecloud/weblogic          latest              8ad042d7793e        5 months ago        1.383 GB
 ```
 List all our containers that are running
 ```
@@ -58,14 +61,14 @@ In fact there aren't instances yet
 
 Run container **wlsadmin** Weblogic Admin Server
 ```
-# sudo docker run --name wlsadmin -d -p 8001:8001 renecloud/weblogic
+# sudo docker run --name wlsadmin -d -p 8001:8001 renecloud/weblogic-domain
 dd35826b21fa4e6e96bb66c2c7196c602c1d8862c3148562e29de6b78f573e35
 ```
 This container is running up, Now we will check logs. Firstable we need to get CONTAINER ID
 ```
 # sudo docker ps
 CONTAINER ID        IMAGE                COMMAND              CREATED             STATUS              PORTS                                        NAMES
-dd35826b21fa        renecloud/weblogic   "startWebLogic.sh"   6 seconds ago       Up 5 seconds        5556/tcp, 7001/tcp, 0.0.0.0:8001->8001/tcp   wlsadmin
+dd35826b21fa        renecloud/weblogic-domain   "startWebLogic.sh"   6 seconds ago       Up 5 seconds        5556/tcp, 7001/tcp, 0.0.0.0:8001->8001/tcp   wlsadmin
 ```
 Now we can see all logs of this instance
 ```
@@ -83,7 +86,7 @@ TODO: Put weblogic_welcome.png
 ## 1.5 Setting Up Managed Servers
 So, then go next to put two Managed Weblogic
 ```
-# sudo docker run --name m1 -d -p 7101:7001 --link wlsadmin:wlsadmin renecloud/weblogic createServer.sh
+# sudo docker run --name m1 -d -p 7101:7001 --link wlsadmin:wlsadmin renecloud/weblogic-domain createServer.sh
 607f1889829b236efff6739a11397655b516ac5af185667a0a5b2d5e0b67631b
 
 # sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
@@ -91,7 +94,7 @@ Server with name ManagedServer-SHc0xS@607f1889829b started successfully
 ```
 and the same for second Managed Weblogic chaning name to **m2** and mapping port **7102:7001" 
 ```
-# sudo docker run --name m2 -d -p 7102:7001 --link wlsadmin:wlsadmin renecloud/weblogic createServer.sh
+# sudo docker run --name m2 -d -p 7102:7001 --link wlsadmin:wlsadmin renecloud/weblogic-domain createServer.sh
 607f1889829b236efff6739a11397655b516ac5af185667a0a5b2d5e0b67631b
 
 # sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
@@ -105,7 +108,7 @@ TODO: Put Webconsole2.png image
 Using the same Docker Image we will create an manchines in order to create our Coherence Managed Server and Cluster
 Then, creating Weblogic Machines
 ```
-# sudo docker run --name c1 -d -p 7201:7001 -p 7501:7574 --link wlsadmin:wlsadmin renecloud/weblogic createMachine.sh
+# sudo docker run --name c1 -d -p 7201:7001 -p 7501:7574 --link wlsadmin:wlsadmin renecloud/weblogic-domain createMachine.sh
 607f1889829b236efff6739a11397655b516ac5af185667a0a5b2d5e0b67631a
 
 # sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
@@ -114,7 +117,7 @@ The edit lock associated with this edit session is released once the activation 
 ```
 Same for the other Weblogic Machine, but change name to **c2** mapping ports **7202:7001** and **7502:7574**
 ```
-# sudo docker run --name c2 -d -p 7202:7001 -p 7502:7574 --link wlsadmin:wlsadmin renecloud/weblogic createMachine.sh
+# sudo docker run --name c2 -d -p 7202:7001 -p 7502:7574 --link wlsadmin:wlsadmin renecloud/weblogic-domain createMachine.sh
 607f1889829b236efff6739a11397655b516ac5af185667a0a5b2d5e0bad631a
 
 # sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
@@ -125,11 +128,11 @@ Yo can verify all Docker Instances are running on our host and free memory avail
 ```
 # sudo docker ps
 CONTAINER ID        IMAGE                COMMAND              CREATED             STATUS              PORTS                                                                NAMES
-71ac37c7132a        renecloud/weblogic   "createMachine.sh"   2 minutes ago       Up 2 minutes        5556/tcp, 8001/tcp, 0.0.0.0:7202->7001/tcp, 0.0.0.0:7502->7574/tcp   c2
-ac41a0690c3a        renecloud/weblogic   "createMachine.sh"   8 minutes ago       Up 8 minutes        5556/tcp, 8001/tcp, 0.0.0.0:7201->7001/tcp, 0.0.0.0:7501->7574/tcp   c1
-59b6d4448611        renecloud/weblogic   "createServer.sh"    35 minutes ago      Up 35 minutes       5556/tcp, 8001/tcp, 0.0.0.0:7102->7001/tcp                           m2
-607f1889829b        renecloud/weblogic   "createServer.sh"    45 minutes ago      Up 45 minutes       5556/tcp, 8001/tcp, 0.0.0.0:7101->7001/tcp                           m1
-dd35826b21fa        renecloud/weblogic   "startWebLogic.sh"   About an hour ago   Up About an hour    5556/tcp, 0.0.0.0:8001->8001/tcp, 7001/tcp                           wlsadmin
+71ac37c7132a        renecloud/weblogic-domain   "createMachine.sh"   2 minutes ago       Up 2 minutes        5556/tcp, 8001/tcp, 0.0.0.0:7202->7001/tcp, 0.0.0.0:7502->7574/tcp   c2
+ac41a0690c3a        renecloud/weblogic-domain   "createMachine.sh"   8 minutes ago       Up 8 minutes        5556/tcp, 8001/tcp, 0.0.0.0:7201->7001/tcp, 0.0.0.0:7501->7574/tcp   c1
+59b6d4448611        renecloud/weblogic-domain   "createServer.sh"    35 minutes ago      Up 35 minutes       5556/tcp, 8001/tcp, 0.0.0.0:7102->7001/tcp                           m2
+607f1889829b        renecloud/weblogic-domain   "createServer.sh"    45 minutes ago      Up 45 minutes       5556/tcp, 8001/tcp, 0.0.0.0:7101->7001/tcp                           m1
+dd35826b21fa        renecloud/weblogic-domain   "startWebLogic.sh"   About an hour ago   Up About an hour    5556/tcp, 0.0.0.0:8001->8001/tcp, 7001/tcp                           wlsadmin
 
 # sudo free -h
              total       used       free     shared    buffers     cached
