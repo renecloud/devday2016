@@ -83,7 +83,7 @@ http://<ID>.renecloud.io:8001/console
 User: weblogic 
 Password: welcome1
 
-TODO: Put weblogic_welcome.png
+![Weblogic console](files/weblogic_welcome.png)
 
 ## 1.5 Setting Up Managed Servers
 So, then go next to put two Managed Weblogic
@@ -104,7 +104,7 @@ Server with name ManagedServer-SHc0xS@607f1889829b started successfully
 ```
 Please check on Weblogic Administration Console, Environment-->Servers. You will see admin and managed server RUNNING
 
-TODO: Put Webconsole2.png image
+![Servers Running](files/webconsole2.png)
 
 ## 1.4 Setting Up Coherence Cluster
 Using the same Docker Image we will create an manchines in order to create our Coherence Managed Server and Cluster
