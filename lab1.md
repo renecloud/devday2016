@@ -80,6 +80,8 @@ Your Weblogic Admin is ready!
 Please verify on your Web Browser 
 
 http://<ID>.renecloud.io:8001/console
+User: weblogic 
+Password: welcome1
 
 TODO: Put weblogic_welcome.png
 
