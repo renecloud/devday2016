@@ -106,7 +106,7 @@ Please check on Weblogic Administration Console, Environment-->Servers. You will
 
 ![Servers Running](files/webconsole2.png)
 
-## 1.4 Setting Up Coherence Cluster
+## 1.6 Setting Up Coherence Cluster
 Using the same Docker Image we will create an manchines in order to create our Coherence Managed Server and Cluster
 Then, creating Weblogic Machines
 ```
@@ -142,9 +142,41 @@ Mem:           14G       9.7G       5.0G       196K       464M       2.6G
 -/+ buffers/cache:       6.7G       8.0G
 Swap:         287M         0B       287M
 ```
-Please check again your Weblogic Console Administrator:
+Please check again your Weblogic Console Administrator. Environment-->Machines
 
-TODO 
+TODO: poner imagen webconsole3.png
+
+Now, we have to create a two more managed servers in each machine. 
+Click the Lock & Edit button to modify.
+Select a new machine and add new server
+
+TODO: poner webconsole4.png
+
+Specify that is a new one
+
+TODO: webconsole5.png
+Put name coherence1 for one node.
+
+And then repeat the same for the coherence2 node. and the other machine.
+Finally you will se 4 managed inside 4 machines. 
+
+TODO: webconsole7.png
+
+Now, go to Environment-->Coherence Cluster and press button "Add". Let the name **coherence-0** and port by default and continue.
+
+Select new managed servers just created and press next.
+
+TODO: weblogic8.png
+
+
+
+
+
+
+
+
+
+
 
 
 
