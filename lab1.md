@@ -168,6 +168,18 @@ Select new managed servers just created and press next.
 
 TODO: weblogic8.png
 
+Active cnanges and edit and lock again.
+go to Environment--->Cluster  and press button "Add". Put the name "CoherenceCluster"
+
+TODO: weblogic9.png
+
+Add two managed coherence1 and coherence2 to this cluster. 
+
+Select each server and change to cluster "CoherenceCluster"
+
+TODO: webconsole10.png
+
+Please shutdown all managed server and checking your severs assigned to their clusters.
 
 
 
