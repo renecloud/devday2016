@@ -4,7 +4,7 @@
 
 We have define configuration file in order to mapping two clusters 
 
-With your pair team define those configuration files. [here]() is an exmaple.
+With your pair team define those configuration files. [here](https://github.com/renecloud/HOL-OOWBR/raw/master/files/coh-config-fed.xml) is an exmaple.
 The idea is to put internal IP's and ports where clusters are listening. 
 
 ```
