@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+
+<!--
+     This operational configuration override file is set up for use with Coherence in
+     a production mode, implementing cache federation.
+     
+     @autor Raul Gonzalez
+     @organization Oracle MX
+-->
+
+<coherence  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns="http://xmlns.oracle.com/coherence/coherence-operational-config"
+            xsi:schemaLocation="http://xmlns.oracle.com/coherence/coherence-operational-config coherence-operational-config.xsd"
+            xml-override="/tangosol-coherence-override.xml">    
+
+   <member-identity>
+    <cluster-name system-property="tangosol.coherence.cluster">coherence-x6</cluster-name>
+   </member-identity>	
+
+   <unicast-listener>
+    <well-known-addresses>
+     <socket-address id="WKA1">
+      <address>172.17.0.3</address>
+      <port>7475</port>
+     </socket-address>
+    </well-known-addresses>
+   </unicast-listener>
+   
+ </cluster-config>
+
+
+ <federation-config>
+ 
+  <participants>
+   
+   <participant>
+    <name>coherence-x6</name>
+    <remote-addresses>
+     <socket-address>
+      <address>172.17.0.3</address>
+      <port>7475</port>
+     </socket-address>
+    </remote-addresses>
+   </participant>
+  
+   <participant>
+    <name>coherence-x1</name>
+    <remote-addresses>
+     <socket-address>
+      <address>10.196.134.86</address>
+      <port>7501</port>
+     </socket-address>
+    </remote-addresses>
+   </participant>
+
+
+  </participants>
+ </federation-config>
+</coherence>
