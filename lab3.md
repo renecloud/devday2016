@@ -3,9 +3,9 @@
 ## 3.1 Testing application. 
 First check how coherence is replicating contacts between each URL.
 
-** http://z1.renecloud.io:7101/example-web-app**
+** http://z1.renecloud.io:7101/example-web-app **
 and 
-** http://z1.renecloud.io:7102/example-web-app**
+** http://z1.renecloud.io:7102/example-web-app **
 
 Put each one in each browser tab or in different Web Browser.
 
