@@ -34,6 +34,8 @@ If you see on Weblogic Console this server crashed and we never can recovery.
 
 ![](files/lab3-1.png)
 
+##3.2 Installing new one Managed Server
+
 Now, we can start a new one with one simple command. However if we have to assing same docker id we clean instance history 
 ```
 # sudo docker ps -a
@@ -48,8 +50,16 @@ d9f2b0fd1d12        renecloud/weblogic-domain   "createMachine.sh"   9 hours ago
 ```
 So then creating other Managed Weblogic Server.
 ```
-
+# sudo docker run --name m1 -d -p 7101:7001 --link wlsadmin:wlsadmin renecloud/weblogic-domain createServer.sh
+3faa758e1a580b550c006cf36fcc1252d01d9f3e6ec94d63aa961f9b0a4a2a06
 ```
+Looking into weblogic console, there is staring
+
+![](files/lab3-2.png)
+
+Delete Managed Server died from cluster and delete his Machine associated.
+
+
 
 
 
