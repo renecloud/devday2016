@@ -177,10 +177,11 @@ Add two managed coherence1 and coherence2 to this cluster.
 
 Select each server and change to cluster "CoherenceCluster"
 
-![Coherence ready](webconsole10.png) 
+![Coherence ready](files/webconsole10.png) 
 
 Please shutdown all managed server and checking your severs assigned to their clusters.
 
+![Coherence ready](files/webconsole11.png) 
 
 
 
