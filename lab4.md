@@ -72,7 +72,7 @@ Go to next tab ** Well Known Addresses ** and then press "New" button.
 
 Put same information as you configure in your configuration file.
 
-![](files/lab4-5.png)
+![](files/lab4-6.png)
 
 Active all yor changes. 
 
