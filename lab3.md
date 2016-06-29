@@ -59,6 +59,9 @@ Looking into weblogic console, there is staring
 
 Delete Managed Server died from cluster and delete his Machine associated.
 
+![](files/lab3-3.png)
+
+Terrific!! Done!
 
 
 
