@@ -144,40 +144,40 @@ Swap:         287M         0B       287M
 ```
 Please check again your Weblogic Console Administrator. Environment-->Machines
 
-TODO: poner imagen webconsole3.png
+![All machines](files/webconsole3.png)
 
 Now, we have to create a two more managed servers in each machine. 
 Click the Lock & Edit button to modify.
 Select a new machine and add new server
 
-TODO: poner webconsole4.png
+![New Machine](files/webconsole4.png)
 
 Specify that is a new one
 
-TODO: webconsole5.png
+![New coherence](files/webconsole5.png)
 Put name coherence1 for one node.
 
 And then repeat the same for the coherence2 node. and the other machine.
 Finally you will se 4 managed inside 4 machines. 
 
-TODO: webconsole7.png
+![Other one](files/webconsole7.png)
 
 Now, go to Environment-->Coherence Cluster and press button "Add". Let the name **coherence-0** and port by default and continue.
 
 Select new managed servers just created and press next.
 
-TODO: weblogic8.png
+![New Managed](files/webconsole8.png)
 
 Active cnanges and edit and lock again.
 go to Environment--->Cluster  and press button "Add". Put the name "CoherenceCluster"
 
-TODO: weblogic9.png
+![Coherence Cluster](files/weblogic9.png)
 
 Add two managed coherence1 and coherence2 to this cluster. 
 
 Select each server and change to cluster "CoherenceCluster"
 
-TODO: webconsole10.png
+![Coherence ready](webconsole10.png) 
 
 Please shutdown all managed server and checking your severs assigned to their clusters.
 
