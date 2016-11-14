@@ -28,12 +28,34 @@ Linux oowbr4 4.1.12-37.5.1.el6uek.x86_64 #2 SMP Thu Jun 9 15:56:37 PDT 2016 x86_
 ```
 Check docker installation
 ```
+# sudo service docker start
+Starting cgconfig service:                           [  OK  ]
+Starting docker:	.                                  [  OK  ]
+
 # sudo docker --version
-Docker version 1.10.3, build 57bf6fd
+Docker version 1.12.2, build 19fddc2
+
+# sudo docker info
+...
+Data Space Used: 305.7 MB
+ Data Space Total: 107.4 GB
+ Data Space Available: 48.04 GB
+ Metadata Space Used: 733.2 kB
+ Metadata Space Total: 2.147 GB
+ Metadata Space Available: 2.147 GB
+...
+Kernel Version: 4.1.12-37.6.3.el6uek.x86_64
+Operating System: Oracle Linux Server 6.8
+OSType: linux
+Architecture: x86_64
+CPUs: 2
+Total Memory: 14.69 GiB
+...
 
 # sudo docker run hello-world
 ...
-Hello from Docker.
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 ```
 Check Memory available
 ```
@@ -48,9 +70,7 @@ Swap:         287M         0B       287M
 List all images on our local repository
 ```
 # sudo docker images
-renecloud/weblogic-domain   latest              c0c2a0eb41c6        37 hours ago        1.806 GB
 hello-world                 latest              693bce725149        2 weeks ago         967 B
-renecloud/weblogic          latest              8ad042d7793e        5 months ago        1.383 GB
 ```
 List all our containers that are running
 ```
@@ -61,6 +81,7 @@ In fact there aren't instances yet
 
 Run container **wlsadmin** Weblogic Admin Server
 ```
+# sudo docker pull renecloud/weblogic-domain
 # sudo docker run --name wlsadmin -d -p 8001:8001 renecloud/weblogic-domain
 dd35826b21fa4e6e96bb66c2c7196c602c1d8862c3148562e29de6b78f573e35
 ```
@@ -79,7 +100,7 @@ Now we can see all logs of this instance
 Your Weblogic Admin is ready!
 Please verify on your Web Browser 
 
-http://<ID>.renecloud.io:8001/console
+http://ID.renecloud.io:8001/console
 User: weblogic 
 Password: welcome1
 
@@ -94,12 +115,12 @@ So, then go next to put two Managed Weblogic
 # sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
 Server with name ManagedServer-SHc0xS@607f1889829b started successfully
 ```
-and the same for second Managed Weblogic chaning name to **m2** and mapping port **7102:7001" 
+and the same for second Managed Weblogic chaning name to **m2** and mapping port **7102:7001
 ```
 # sudo docker run --name m2 -d -p 7102:7001 --link wlsadmin:wlsadmin renecloud/weblogic-domain createServer.sh
 607f1889829b236efff6739a11397655b516ac5af185667a0a5b2d5e0b67631b
 
-# sudo docker logs --tail=all dd35826b21fa  <---- Change for your CONTAINER ID
+# sudo docker logs --tail=all dd35826b21fa    o--- Change for your CONTAINER ID
 Server with name ManagedServer-SHc0xS@607f1889829b started successfully
 ```
 Please check on Weblogic Administration Console, Environment-->Servers. You will see admin and managed server RUNNING
