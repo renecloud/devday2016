@@ -18,7 +18,7 @@ So you put an HOST that instructor given to you.
 **On Linux or Mac:** You need to use command line terminal typing "terminal" in search panel.
 
 ```
-# ssh -i oowbr-private.key opc@p1.renecloud.io
+# ssh -i devday.private.key opc@p1.renecloud.io
 ```
 ## 1.3 Checking tools
 Check that linux kernel is 4.1.x 
