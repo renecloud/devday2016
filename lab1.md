@@ -1,6 +1,6 @@
 #Laboratory 1. Setup Environment
 Pre-requisities: You only need SSH Access to Internet, The instructor provide of file with a private SSH Key.
-Copy file called **oowbr-private.key** on your local directory.
+Copy file called **devday-private.key** on your local directory.
 
 ## 1.1 Accessing to Your Enviroment
 **On Windows:** You need to use some SSH Client like PuttySSH [download PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
